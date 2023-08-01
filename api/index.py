@@ -1,5 +1,4 @@
 from flask import Flask, jsonify
-from waitress import serve
 import AO3
 
 app = Flask(__name__)

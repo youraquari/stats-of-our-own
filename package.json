@@ -1,6 +1,6 @@
 {
   "name": "stats-of-our-own",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": false,
   "license": "MIT",
   "scripts": {
@@ -17,6 +17,7 @@
     "@heroicons/react": "^2.0.18",
     "@mui/icons-material": "^5.14.1",
     "@mui/material": "^5.14.2",
+    "@mui/utils": "^5.14.3",
     "@types/node": "20.1.4",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
