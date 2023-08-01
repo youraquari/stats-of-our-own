@@ -1,0 +1,4 @@
+numpy==1.24.3
+FLask[async]==2.2.2
+ao3-api==2.3.0
+waitress==2.1.2
