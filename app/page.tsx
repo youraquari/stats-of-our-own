@@ -24,6 +24,7 @@ import { Footer } from "@/components/Footer";
 export default function Home() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchError, setSearchError] = useState();
+  const [loading, setLoading] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -64,6 +65,7 @@ export default function Home() {
   });
 
   const getUser = async (e: any) => {
+    setLoading(true);
     await axios
       .get(`/api/user/${e.id}`)
       .then(async (res) => {
@@ -96,7 +98,8 @@ export default function Home() {
       })
       .catch((e) => {
         setSearchError(e.message);
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -120,6 +123,7 @@ export default function Home() {
           hits={hits}
           labels={labels}
           error={searchError}
+          loading={loading}
         />
         {works && <TableHUD works={works} />}
       </Box>

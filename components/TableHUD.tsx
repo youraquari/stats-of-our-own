@@ -264,7 +264,7 @@ export default function TableHUD({ works }: Props) {
                   key={row.name}
                   sx={{ cursor: "pointer" }}
                 >
-                  <TableCell align="left" id={labelId}>
+                  <TableCell align="left" id={labelId} sx={{ width: "320px" }}>
                     {row.name}
                   </TableCell>
                   <TableCell align="left">

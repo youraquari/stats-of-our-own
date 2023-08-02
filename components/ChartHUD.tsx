@@ -2,7 +2,7 @@ import { MinimalDataset, Work } from "@/lib/types";
 import { useEffect, useState } from "react";
 import { Chart } from "react-chartjs-2";
 import { Chart as ChartJS, registerables } from "chart.js";
-import { Alert, Box, Snackbar } from "@mui/material";
+import { Alert, Box, CircularProgress, Snackbar } from "@mui/material";
 
 type Props = {
   works?: Work[];
@@ -12,6 +12,7 @@ type Props = {
   bookmarks: MinimalDataset;
   labels?: string[];
   error?: string;
+  loading: boolean
 };
 
 export function ChartHUD({
@@ -22,8 +23,9 @@ export function ChartHUD({
   bookmarks,
   labels,
   error,
+  loading
 }: Props) {
-  const showTutorialText = !works;
+  const showTutorialText = !works && !loading;
   const [data, setData] = useState({
     labels,
     datasets: [
@@ -116,11 +118,16 @@ export function ChartHUD({
 
   return (
     <div className="h-fit p-4 relative">
-      {showTutorialText && (
+      {showTutorialText && !loading && (
         <Box className="absolute top-[50%] left-[17%] md:left-[40%]">
           <Alert severity="info">Please search for a user to begin.</Alert>
         </Box>
       )}
+      {!showTutorialText && loading && (
+        <Box className="absolute top-[50%] left-[50%]">
+          <CircularProgress />
+        </Box>
+      )} 
       <Snackbar
         open={!!error}
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}

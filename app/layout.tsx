@@ -1,5 +1,6 @@
 import React from "react";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
   title: "Stats of Our Own",
@@ -14,6 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>{children}</body>
+      <Analytics />
     </html>
   );
 }
