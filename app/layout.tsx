@@ -1,10 +1,24 @@
 import React from "react";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
+import { Metadata } from "next";
 
-export const metadata = {
-  title: "Stats of Our Own",
-  description: "A statistics page based on the website Archive Of Our Own",
+const title = "Stats of Our Own";
+const description =
+  "A smart statistics page for Archive of Our Own (AO3) writers.";
+
+export const metadata: Metadata = {
+  title: title,
+  description: description,
+  keywords: ["AO3", "An Archive of Our Own", "Statistics"],
+  creator: "youraquari",
+  openGraph: {
+    type: "website",
+    url: "https://stats-of-our-own.vercel.app/",
+    title: title,
+    description: description,
+    siteName: title,
+  },
 };
 
 export default function RootLayout({
