@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     title: title,
     description: description,
     siteName: title,
+    images: "/og.png",
   },
 };
 
@@ -28,6 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <link rel="icon" href="/favicon.ico" sizes="any" />
       <body>{children}</body>
       <Analytics />
     </html>

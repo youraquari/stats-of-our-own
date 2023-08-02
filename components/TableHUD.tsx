@@ -193,6 +193,8 @@ export default function TableHUD({ works }: Props) {
     if (works) {
       const rowData = [];
       for (const work of works) {
+        console.log(work.hits, work.kudos);
+
         rowData.push(
           createData(
             work.title,

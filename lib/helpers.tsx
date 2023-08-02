@@ -36,5 +36,7 @@ export function getBatchHitsKudosRatio(hits: number[], kudos: number[]) {
 }
 
 export function getHitsKudosRatio(hits: number, kudos: number) {
-  return Math.round((kudos / hits) * 100);
+  return hits && kudos && hits > 0 && kudos > 0
+    ? Math.round((kudos / hits) * 100)
+    : 0;
 }
