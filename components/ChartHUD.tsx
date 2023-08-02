@@ -12,7 +12,7 @@ type Props = {
   bookmarks: MinimalDataset;
   labels?: string[];
   error?: string;
-  loading: boolean
+  loading: boolean;
 };
 
 export function ChartHUD({
@@ -23,7 +23,7 @@ export function ChartHUD({
   bookmarks,
   labels,
   error,
-  loading
+  loading,
 }: Props) {
   const showTutorialText = !works && !loading;
   const [data, setData] = useState({
@@ -119,21 +119,23 @@ export function ChartHUD({
   return (
     <div className="h-fit p-4 relative">
       {showTutorialText && !loading && (
-        <Box className="absolute top-[50%] left-[17%] md:left-[40%]">
-          <Alert severity="info">Please search for a user to begin.</Alert>
+        <Box className="absolute top-[36%] w-[220px] left-[25%] md:top-[50%] md:left-[35%] md:w-auto">
+          <Alert severity="info">
+            Please search for a user with public works to begin.
+          </Alert>
         </Box>
       )}
       {!showTutorialText && loading && (
         <Box className="absolute top-[50%] left-[50%]">
           <CircularProgress />
         </Box>
-      )} 
+      )}
       <Snackbar
         open={!!error}
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       >
         <Alert severity="error" variant="filled" sx={{ width: "100%" }}>
-          User not found! Please try again with another user.
+          {error}
         </Alert>
       </Snackbar>
       <Chart

@@ -23,7 +23,7 @@ import { Footer } from "@/components/Footer";
 
 export default function Home() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [searchError, setSearchError] = useState();
+  const [searchError, setSearchError] = useState<string>();
   const [loading, setLoading] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -65,39 +65,49 @@ export default function Home() {
   });
 
   const getUser = async (e: any) => {
+    if (!e.id) {
+      setSearchError("Please enter a valid username.");
+      return;
+    }
     setLoading(true);
     await axios
       .get(`/api/user/${e.id}`)
       .then(async (res) => {
-        setSearchError(undefined);
-        const hitsData = await getHits(res.data.works);
-        const kudosData = await getKudos(res.data.works);
-        const hitsKudosRatioData = await getBatchHitsKudosRatio(
-          hitsData,
-          kudosData
-        );
-        setWorks(res.data.works);
-        setUser({ username: res.data.username, bio: res.data.bio });
-        setLabels(await getTitles(res.data.works));
-        setHitsKudosRatio({
-          ...hitsKudosRatio,
-          data: hitsKudosRatioData,
-        });
-        setHits({
-          ...hits,
-          data: hitsData,
-        });
-        setKudos({
-          ...kudos,
-          data: kudosData,
-        });
-        setBookmarks({
-          ...bookmarks,
-          data: await getBookmarks(res.data.works),
-        });
+        if (res.data.works.length > 0) {
+          setSearchError(undefined);
+          const hitsData = await getHits(res.data.works);
+          const kudosData = await getKudos(res.data.works);
+          const hitsKudosRatioData = await getBatchHitsKudosRatio(
+            hitsData,
+            kudosData,
+          );
+          setWorks(res.data.works);
+          setUser({ username: res.data.username, bio: res.data.bio });
+          setLabels(await getTitles(res.data.works));
+          setHitsKudosRatio({
+            ...hitsKudosRatio,
+            data: hitsKudosRatioData,
+          });
+          setHits({
+            ...hits,
+            data: hitsData,
+          });
+          setKudos({
+            ...kudos,
+            data: kudosData,
+          });
+          setBookmarks({
+            ...bookmarks,
+            data: await getBookmarks(res.data.works),
+          });
+        } else {
+          setSearchError(
+            "This user has no public works! Please search for another user.",
+          );
+        }
       })
       .catch((e) => {
-        setSearchError(e.message);
+        setSearchError("User not found! Please search for another user.");
       })
       .finally(() => setLoading(false));
   };

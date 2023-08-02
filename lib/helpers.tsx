@@ -19,7 +19,7 @@ export function getHits(works: any) {
 
 export function getBookmarks(works: any) {
   const bookmarks = works.map((work: { bookmarks: string }) =>
-    parseInt(work.bookmarks)
+    parseInt(work.bookmarks),
   );
   return bookmarks;
 }
