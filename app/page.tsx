@@ -160,8 +160,8 @@ export default function Home() {
           </FormGroup>
         </div>
         <Divider />
+        <Footer />
       </ResponsiveDrawer>
-      <Footer />
     </main>
   );
 }

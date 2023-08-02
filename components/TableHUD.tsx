@@ -242,7 +242,7 @@ export default function TableHUD({ works }: Props) {
   );
 
   return (
-    <Box className="p-4">
+    <Box className="py-2 px-5">
       <TableContainer>
         <Table
           sx={{ minWidth: 750 }}

@@ -117,7 +117,7 @@ export function ChartHUD({
   return (
     <div className="h-fit p-4 relative">
       {showTutorialText && (
-        <Box className="absolute top-[50%] left-[40%]">
+        <Box className="absolute top-[50%] left-[17%] md:left-[40%]">
           <Alert severity="info">Please search for a user to begin.</Alert>
         </Box>
       )}

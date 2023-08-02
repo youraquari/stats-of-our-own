@@ -26,7 +26,7 @@ export function Navbar({ handleSubmit, register, handleDrawerToggle }: Props) {
           component="div"
           sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
         >
-          Stats of Our Own
+          ✏️ SO3 - Stats of Our Own
         </Typography>
         <form
           onSubmit={handleSubmit}
