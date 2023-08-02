@@ -1,42 +1,51 @@
-import { Work } from "./types";
+import { Work } from './types'
 
-export const drawerWidth = 360;
+export const drawerWidth = 360
 
-export function getTitles(works: any) {
-  const titles = works.map((work: { title: string }) => work.title);
-  return titles;
+export function getTitles(works: Work[]) {
+  const titles = works.map((work: { title: string }) => work.title)
+  return titles
 }
 
-export function getKudos(works: any) {
-  const kudos = works.map((work: { kudos: string }) => parseInt(work.kudos));
-  return kudos;
+export function getKudos(works: Work[]) {
+  const kudos = works.map((work: Work) => work.kudos)
+  return kudos
 }
 
-export function getHits(works: any) {
-  const hits = works.map((work: { hits: string }) => parseInt(work.hits));
-  return hits;
+export function getHits(works: Work[]) {
+  const hits = works.map((work: Work) => work.hits)
+  return hits
 }
 
-export function getBookmarks(works: any) {
-  const bookmarks = works.map((work: { bookmarks: string }) =>
-    parseInt(work.bookmarks),
-  );
-  return bookmarks;
+export function getBookmarks(works: Work[]) {
+  const bookmarks = works.map((work: Work) => work.bookmarks)
+  return bookmarks
 }
 
-export function getBatchHitsKudosRatio(hits: number[], kudos: number[]) {
+export function getNumChapters(works: Work[]) {
+  const numChapters = works.map((work: Work) => work.nchapters)
+  return numChapters
+}
+
+export function getBatchHitsKudosRatio(hits: number[], kudos: number[], numChapters: number[]) {
   if (hits.length !== kudos.length) {
-    return []; // TODO: Handle error
+    return [] // TODO: Handle error
   }
-  const hitsKudosRatio = [];
+  const hitsKudosRatio = []
   for (let i = 0; i < hits.length; i++) {
-    hitsKudosRatio.push(getHitsKudosRatio(hits[i], kudos[i]));
+    hitsKudosRatio.push(getHitsKudosRatio(hits[i], kudos[i], numChapters[i]))
   }
-  return hitsKudosRatio;
+  return hitsKudosRatio
 }
 
-export function getHitsKudosRatio(hits: number, kudos: number) {
-  return hits && kudos && hits > 0 && kudos > 0
-    ? Math.round((kudos / hits) * 100)
-    : 0;
+export function getHitsKudosRatio(hits: number, kudos: number, numChapters: number) {
+  if (!hits || !kudos || hits === 0 || kudos === 0) {
+    return 0
+  }
+  const avgHits = numChapters > 1 ? getAvgHits(hits, kudos, numChapters) : hits
+  return Math.round((kudos / avgHits) * 100)
+}
+
+export function getAvgHits(hits: number, kudos: number, numChapters: number) {
+  return hits - kudos * numChapters
 }

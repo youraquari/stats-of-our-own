@@ -1,18 +1,14 @@
-import { drawerWidth } from "@/lib/helpers";
-import { Drawer } from "@mui/material";
-import React from "react";
+import { drawerWidth } from '@/lib/helpers'
+import { Drawer } from '@mui/material'
+import React from 'react'
 
 type Props = {
-  mobileOpen: boolean;
-  children: React.ReactNode;
-  handleDrawerToggle: () => void;
-};
+  mobileOpen: boolean
+  children: React.ReactNode
+  handleDrawerToggle: () => void
+}
 
-export function ResponsiveDrawer({
-  mobileOpen,
-  children,
-  handleDrawerToggle,
-}: Props) {
+export function ResponsiveDrawer({ mobileOpen, children, handleDrawerToggle }: Props) {
   return (
     <>
       <Drawer
@@ -24,9 +20,9 @@ export function ResponsiveDrawer({
           keepMounted: true, // Better open performance on mobile.
         }}
         sx={{
-          display: { xs: "block", sm: "none" },
-          "& .MuiDrawer-paper": {
-            boxSizing: "border-box",
+          display: { xs: 'block', sm: 'none' },
+          '& .MuiDrawer-paper': {
+            boxSizing: 'border-box',
             width: drawerWidth,
           },
         }}
@@ -37,9 +33,9 @@ export function ResponsiveDrawer({
         variant="permanent"
         anchor="right"
         sx={{
-          display: { xs: "none", sm: "block" },
-          "& .MuiDrawer-paper": {
-            boxSizing: "border-box",
+          display: { xs: 'none', sm: 'block' },
+          '& .MuiDrawer-paper': {
+            boxSizing: 'border-box',
             width: drawerWidth,
           },
         }}
@@ -48,5 +44,5 @@ export function ResponsiveDrawer({
         {children}
       </Drawer>
     </>
-  );
+  )
 }

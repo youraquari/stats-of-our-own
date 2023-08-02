@@ -1,0 +1,13 @@
+{
+  "semi": false,
+  "printWidth": 100,
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "overrides": [
+    {
+      "files": ["*.js", "*.jsx", "*.ts", "*.tsx"],
+      "options": {
+        "singleQuote": true
+      }
+    }
+  ]
+}

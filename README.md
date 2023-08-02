@@ -1,8 +1,24 @@
-## ✏️ SO3 - Stats of Our Own
+## ✏️ [SO3](https://stats-of-our-own.vercel.app/) - Stats of Our Own
 
 ### Introduction
 
+A smart statistics page for Archive of Our Own (AO3) writers.
+
 This was a lil weekend project to smartify AO3 stats. Made by yours truly. Feel free to contribute and/or hit me with a [Kofi](https://ko-fi.com/aquari)!
+
+### Hits-Kudos Ratio
+
+The widely used 'Golden Ratio' is 1 kudos per 10 hits, or 10%.
+
+For works with > 1 chapter, we're averaging the number of hits per chapter with this calculation:
+
+```bash
+avgHits = totalHits - (totalKudos * numChapters)
+```
+
+The logic behind this calculation is not perfect, but has a reasonable amount of truth. For each chapter, we can assume with loose probability that each person who has left a kudos will read every chapter.
+
+As always, take this calculation with a grain of salt and has room for improvement. Feel free to help me enhance this.
 
 ### Stack
 

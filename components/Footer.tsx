@@ -1,16 +1,16 @@
-import { drawerWidth } from "@/lib/helpers";
-import { Box, Divider, IconButton, Typography } from "@mui/material";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import Image from "next/image";
+import { drawerWidth } from '@/lib/helpers'
+import { Box, Divider, IconButton, Typography } from '@mui/material'
+import GitHubIcon from '@mui/icons-material/GitHub'
+import TwitterIcon from '@mui/icons-material/Twitter'
+import Image from 'next/image'
 
 export function Footer() {
   return (
     <Box
       sx={{
-        marginTop: "calc(10% + 60px)",
+        marginTop: 'calc(10% + 60px)',
         width: drawerWidth,
-        position: "fixed",
+        position: 'fixed',
         bottom: 0,
       }}
       component="footer"
@@ -19,21 +19,18 @@ export function Footer() {
       <div className="flex flex-col items-center justify-center gap-2 py-6 text-center">
         <div className="flex flex-col">
           <Typography variant="caption" color="initial">
-            Made & maintained by{" "}
+            Made & maintained by{' '}
             <a href="https://www.twitter.com/youraquari" target="_blank">
               Aquari
-            </a>{" "}
+            </a>{' '}
             💖
           </Typography>
           <Typography variant="caption" color="initial">
             Not affiliated with Archive Of Our Own.
           </Typography>
           <Typography variant="caption" color="initial">
-            Please feel free to{" "}
-            <a
-              href="https://github.com/youraquari/stats-of-our-own"
-              target="_blank"
-            >
+            Please feel free to{' '}
+            <a href="https://github.com/youraquari/stats-of-our-own" target="_blank">
               contribute
             </a>
             !
@@ -56,7 +53,7 @@ export function Footer() {
             color="primary"
             aria-label="Kofi"
           >
-            <Image src="/kofi_logo.png" alt={"Kofi"} width={32} height={32} />
+            <Image src="/kofi_logo.png" alt={'Kofi'} width={32} height={32} />
           </IconButton>
           <IconButton
             href="https://twitter.com/youraquari"
@@ -70,5 +67,5 @@ export function Footer() {
         </div>
       </div>
     </Box>
-  );
+  )
 }

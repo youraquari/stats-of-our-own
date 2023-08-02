@@ -1,19 +1,19 @@
-import { MinimalDataset, Work } from "@/lib/types";
-import { useEffect, useState } from "react";
-import { Chart } from "react-chartjs-2";
-import { Chart as ChartJS, registerables } from "chart.js";
-import { Alert, Box, CircularProgress, Snackbar } from "@mui/material";
+import { MinimalDataset, Work } from '@/lib/types'
+import { useEffect, useState } from 'react'
+import { Chart } from 'react-chartjs-2'
+import { Chart as ChartJS, registerables } from 'chart.js'
+import { Alert, Box, CircularProgress, Snackbar } from '@mui/material'
 
 type Props = {
-  works?: Work[];
-  hitsKudosRatio: MinimalDataset;
-  kudos: MinimalDataset;
-  hits: MinimalDataset;
-  bookmarks: MinimalDataset;
-  labels?: string[];
-  error?: string;
-  loading: boolean;
-};
+  works?: Work[]
+  hitsKudosRatio: MinimalDataset
+  kudos: MinimalDataset
+  hits: MinimalDataset
+  bookmarks: MinimalDataset
+  labels?: string[]
+  error?: string
+  loading: boolean
+}
 
 export function ChartHUD({
   works,
@@ -25,7 +25,7 @@ export function ChartHUD({
   error,
   loading,
 }: Props) {
-  const showTutorialText = !works && !loading;
+  const showTutorialText = !works && !loading
   const [data, setData] = useState({
     labels,
     datasets: [
@@ -66,7 +66,7 @@ export function ChartHUD({
         hidden: bookmarks.hidden,
       },
     ],
-  });
+  })
 
   useEffect(() => {
     if (works) {
@@ -110,37 +110,32 @@ export function ChartHUD({
             hidden: bookmarks.hidden,
           },
         ],
-      });
+      })
     }
-  }, [kudos, bookmarks, hits, hitsKudosRatio]);
+  }, [kudos, bookmarks, hits, hitsKudosRatio])
 
-  ChartJS.register(...registerables);
+  ChartJS.register(...registerables)
 
   return (
-    <div className="h-fit p-4 relative">
+    <div className="relative h-fit p-4">
       {showTutorialText && !loading && (
-        <Box className="absolute top-[36%] w-[220px] left-[25%] md:top-[50%] md:left-[35%] md:w-auto">
-          <Alert severity="info">
-            Please search for a user with public works to begin.
-          </Alert>
+        <Box className="absolute left-[25%] top-[36%] w-[220px] md:left-[35%] md:top-[50%]  md:w-auto">
+          <Alert severity="info">Please search for a user with public works to begin.</Alert>
         </Box>
       )}
       {!showTutorialText && loading && (
-        <Box className="absolute top-[50%] left-[50%]">
+        <Box className="absolute left-[50%] top-[50%]">
           <CircularProgress />
         </Box>
       )}
-      <Snackbar
-        open={!!error}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-      >
-        <Alert severity="error" variant="filled" sx={{ width: "100%" }}>
+      <Snackbar open={!!error} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
+        <Alert severity="error" variant="filled" sx={{ width: '100%' }}>
           {error}
         </Alert>
       </Snackbar>
       <Chart
         data={data}
-        type={"bar"}
+        type={'bar'}
         options={{
           plugins: {
             legend: {
@@ -150,5 +145,5 @@ export function ChartHUD({
         }}
       />
     </div>
-  );
+  )
 }

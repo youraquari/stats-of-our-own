@@ -56,6 +56,12 @@ dependencies:
   next:
     specifier: 13.4.3
     version: 13.4.3(react-dom@18.2.0)(react@18.2.0)
+  prettier:
+    specifier: ^3.0.0
+    version: 3.0.0
+  prettier-plugin-tailwindcss:
+    specifier: ^0.4.1
+    version: 0.4.1(prettier@3.0.0)
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -3867,6 +3873,73 @@ packages:
         integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==,
       }
     engines: { node: ">= 0.8.0" }
+    dev: false
+
+  /prettier-plugin-tailwindcss@0.4.1(prettier@3.0.0):
+    resolution:
+      {
+        integrity: sha512-hwn2EiJmv8M+AW4YDkbjJ6HlZCTzLyz1QlySn9sMuKV/Px0fjwldlB7tol8GzdgqtkdPtzT3iJ4UzdnYXP25Ag==,
+      }
+    engines: { node: ">=12.17.0" }
+    peerDependencies:
+      "@ianvs/prettier-plugin-sort-imports": "*"
+      "@prettier/plugin-pug": "*"
+      "@shopify/prettier-plugin-liquid": "*"
+      "@shufo/prettier-plugin-blade": "*"
+      "@trivago/prettier-plugin-sort-imports": "*"
+      prettier: ^2.2 || ^3.0
+      prettier-plugin-astro: "*"
+      prettier-plugin-css-order: "*"
+      prettier-plugin-import-sort: "*"
+      prettier-plugin-jsdoc: "*"
+      prettier-plugin-marko: "*"
+      prettier-plugin-organize-attributes: "*"
+      prettier-plugin-organize-imports: "*"
+      prettier-plugin-style-order: "*"
+      prettier-plugin-svelte: "*"
+      prettier-plugin-twig-melody: "*"
+    peerDependenciesMeta:
+      "@ianvs/prettier-plugin-sort-imports":
+        optional: true
+      "@prettier/plugin-pug":
+        optional: true
+      "@shopify/prettier-plugin-liquid":
+        optional: true
+      "@shufo/prettier-plugin-blade":
+        optional: true
+      "@trivago/prettier-plugin-sort-imports":
+        optional: true
+      prettier-plugin-astro:
+        optional: true
+      prettier-plugin-css-order:
+        optional: true
+      prettier-plugin-import-sort:
+        optional: true
+      prettier-plugin-jsdoc:
+        optional: true
+      prettier-plugin-marko:
+        optional: true
+      prettier-plugin-organize-attributes:
+        optional: true
+      prettier-plugin-organize-imports:
+        optional: true
+      prettier-plugin-style-order:
+        optional: true
+      prettier-plugin-svelte:
+        optional: true
+      prettier-plugin-twig-melody:
+        optional: true
+    dependencies:
+      prettier: 3.0.0
+    dev: false
+
+  /prettier@3.0.0:
+    resolution:
+      {
+        integrity: sha512-zBf5eHpwHOGPC47h0zrPyNn+eAEIdEzfywMoYn2XPi0P44Zp0tSq64rq0xAREh4auw2cJZHo9QUob+NqCQky4g==,
+      }
+    engines: { node: ">=14" }
+    hasBin: true
     dev: false
 
   /prop-types@15.8.1:

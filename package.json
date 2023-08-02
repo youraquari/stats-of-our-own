@@ -9,7 +9,8 @@
     "dev": "concurrently \"pnpm run next-dev\" \"pnpm run flask-dev\"",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -29,6 +30,8 @@
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.2",
     "next": "13.4.3",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.4.1",
     "react": "18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
