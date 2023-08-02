@@ -54,6 +54,7 @@ export function SearchBar({ register }: Props) {
         <SearchIcon />
       </SearchIconWrapper>
       <StyledInputBase
+        className="w-full"
         placeholder="Username"
         inputProps={{ 'aria-label': 'search' }}
         {...register('id')}

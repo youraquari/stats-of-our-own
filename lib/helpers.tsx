@@ -47,5 +47,5 @@ export function getHitsKudosRatio(hits: number, kudos: number, numChapters: numb
 }
 
 export function getAvgHits(hits: number, kudos: number, numChapters: number) {
-  return hits - kudos * numChapters
+  return Math.abs(hits - kudos * numChapters)
 }

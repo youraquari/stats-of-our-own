@@ -43,12 +43,20 @@ export function ChartTools({ title, disabled, dataset, info, setState }: Props) 
             setState({ ...dataset, type: newAlignment })
           }
         }}
-        aria-label="Platform"
+        aria-label="Toggle to bar or line graph"
       >
-        <ToggleButton value="bar" disabled={disabled || dataset.hidden}>
+        <ToggleButton
+          value="bar"
+          disabled={disabled || dataset.hidden}
+          aria-label="Toggle to bar graph"
+        >
           <BarChartIcon />
         </ToggleButton>
-        <ToggleButton value="line" disabled={disabled || dataset.hidden}>
+        <ToggleButton
+          value="line"
+          disabled={disabled || dataset.hidden}
+          aria-label="Toggle to line graph"
+        >
           <TimelineIcon />
         </ToggleButton>
       </ToggleButtonGroup>
