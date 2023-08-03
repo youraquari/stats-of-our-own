@@ -69,6 +69,8 @@ export default function Home() {
     if (!e.id) {
       setSearchError('Please enter a valid username.')
       return
+    } else if (e.id === user.username) {
+      return
     }
     setLoading(true)
     await axios
@@ -104,7 +106,14 @@ export default function Home() {
         }
       })
       .catch((e) => {
-        setSearchError('User not found! Please search for another user.')
+        console.log(e)
+        if (e.status === 504) {
+          setSearchError(
+            'Your request timed out. Either you have too many works for the API to handle or the API is running slowly. Please try again later.',
+          )
+        } else if (e.status === 500) {
+          setSearchError('User not found! Please search for another user or try again later.')
+        }
       })
       .finally(() => setLoading(false))
   }
