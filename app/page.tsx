@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { FieldValues, useForm } from 'react-hook-form'
 import axios from 'axios'
 import { Box, Divider, FormGroup, Toolbar, Typography } from '@mui/material'
 import {
@@ -13,6 +13,7 @@ import {
   drawerWidth,
   getBatchHitsKudosRatio,
   getNumChapters,
+  removeSpecialChars,
 } from '@/lib/helpers'
 import { MinimalDataset, User, Work } from '@/lib/types'
 import { ResponsiveDrawer } from '@/components/Drawer'
@@ -65,16 +66,17 @@ export default function Home() {
     hidden: true,
   })
 
-  const getUser = async (e: any) => {
-    if (!e.id) {
+  const getUser = async (e: FieldValues) => {
+    const username = removeSpecialChars(e.id)
+    if (!username) {
       setSearchError('Please enter a valid username.')
       return
-    } else if (e.id === user.username) {
+    } else if (username === user.username) {
       return
     }
     setLoading(true)
     await axios
-      .get(`/api/user/${e.id}`)
+      .get(`/api/user/${username}`)
       .then(async (res) => {
         if (res.data.works.length > 0) {
           setSearchError(undefined)
@@ -106,12 +108,12 @@ export default function Home() {
         }
       })
       .catch((e) => {
-        console.log(e)
-        if (e.status === 504) {
+        console.log('error', e.response)
+        if (e.response.status === 504) {
           setSearchError(
             'Your request timed out. Either you have too many works for the API to handle or the API is running slowly. Please try again later.',
           )
-        } else if (e.status === 500) {
+        } else {
           setSearchError('User not found! Please search for another user or try again later.')
         }
       })

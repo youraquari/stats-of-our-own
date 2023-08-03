@@ -49,3 +49,7 @@ export function getHitsKudosRatio(hits: number, kudos: number, numChapters: numb
 export function getAvgHits(hits: number, kudos: number, numChapters: number) {
   return Math.abs(hits - kudos * numChapters)
 }
+
+export function removeSpecialChars(id: string) {
+  return id.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '')
+}
