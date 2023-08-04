@@ -42,7 +42,8 @@ export function getHitsKudosRatio(hits: number, kudos: number, numChapters: numb
   if (!hits || !kudos || hits === 0 || kudos === 0) {
     return 0
   }
-  const avgHits = numChapters > 1 ? getAvgHits(hits, kudos, numChapters) : hits
+  const avgHits =
+    numChapters > 1 && kudos * numChapters !== hits ? getAvgHits(hits, kudos, numChapters) : hits
   return Math.round((kudos / avgHits) * 100)
 }
 
