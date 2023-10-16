@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   title: title,
   description: description,
   keywords: ['AO3', 'An Archive of Our Own', 'Statistics'],
-  creator: 'youraquari',
   openGraph: {
     type: 'website',
     url: 'https://stats-of-our-own.vercel.app/',

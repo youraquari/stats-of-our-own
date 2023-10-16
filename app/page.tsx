@@ -21,7 +21,6 @@ import { ChartTools } from '@/components/ChartTools'
 import { ChartHUD } from '@/components/ChartHUD'
 import TableHUD from '@/components/TableHUD'
 import { Navbar } from '@/components/Navbar'
-import { Footer } from '@/components/Footer'
 
 export default function Home() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -172,8 +171,6 @@ export default function Home() {
             />
           </FormGroup>
         </div>
-        <Divider />
-        <Footer />
       </ResponsiveDrawer>
     </main>
   )
